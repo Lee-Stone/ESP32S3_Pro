@@ -1,0 +1,27 @@
+{
+  "name": "XPT2046_Bitbang_Slim",
+  "version": "2.0.0",
+  "keywords": "Arduino, ESP32, CYD, touchscreen",
+  "description": "This library provides a software-based SPI (bitbang) approach to interface with the XPT2046 touch screen controller. It allows for touch detection, calibration, and touch coordinate retrieval.",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/TheNitek/XPT2046_Bitbang_Arduino_Library"
+  },
+  "authors":
+  [
+    {
+		"name": "ddxfish",
+        "email": "ddxfish@gmail.com"
+    },
+    {
+		"name": "Claus Näveke",
+		"email": "github@naeveke.de",
+		"url": "https://github.com/TheNitek",
+		"maintainer": true
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "espressif32",
+  "headers": "XPT2046_Bitbang.h"
+}

@@ -3,9 +3,9 @@
 #include <Audio.h>
 #include <SD.h>
 
-#define I2S_DOUT      39
-#define I2S_BCLK      40
-#define I2S_LRC       41
+#define I2S_DOUT      40
+#define I2S_BCLK      41
+#define I2S_LRC       42
 
 Audio audio;
 

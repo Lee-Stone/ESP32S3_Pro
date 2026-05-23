@@ -337,7 +337,7 @@ void ui_event_SliderLight(lv_event_t * e)
     if(event_code == LV_EVENT_VALUE_CHANGED) {
         _ui_slider_set_text_value(ui_LabelLightValue, target, "", "%");
         Set.screen_light = lv_slider_get_value(target);
-        if(Set.screen_light > 0)analogWrite(16, Set.screen_light*2.55);
+        if(Set.screen_light > 0)analogWrite(14, Set.screen_light*2.55);
     }
 }
 

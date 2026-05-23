@@ -131,7 +131,7 @@
 // driven with a PWM signal or turned OFF/ON then this must be handled by the user
 // sketch. e.g. with digitalWrite(TFT_BL, LOW);
 
-#define TFT_BL   16            // LED back-light control pin
+#define TFT_BL   14            // LED back-light control pin
 #define TFT_BACKLIGHT_ON HIGH  // Level to turn ON back-light (HIGH or LOW)
 
 
@@ -302,11 +302,11 @@
 // The ESP8366 and ESP32 have plenty of memory so commenting out fonts is not
 // normally necessary. If all fonts are loaded the extra FLASH space required is
 // about 17Kbytes. To save FLASH space only enable the fonts you need!
-#define TFT_MOSI 7
-#define TFT_SCLK 15
-#define TFT_CS   4
-#define TFT_DC   6
-#define TFT_RST  5
+#define TFT_MOSI 11
+#define TFT_SCLK 12
+#define TFT_CS   10
+#define TFT_DC   9
+#define TFT_RST  -1
 
 #define LOAD_GLCD   // Font 1. Original Adafruit 8 pixel font needs ~1820 bytes in FLASH
 #define LOAD_FONT2  // Font 2. Small 16 pixel high font, needs ~3534 bytes in FLASH, 96 characters
@@ -361,7 +361,7 @@
 // #define SPI_FREQUENCY   5000000
 // #define SPI_FREQUENCY  10000000
 // #define SPI_FREQUENCY  20000000
-#define SPI_FREQUENCY  40000000
+#define SPI_FREQUENCY  80000000
 // #define SPI_FREQUENCY  40000000
 // #define SPI_FREQUENCY  55000000 // STM32 SPI1 only (SPI2 maximum is 27MHz)
 // #define SPI_FREQUENCY  80000000

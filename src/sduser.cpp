@@ -2,10 +2,10 @@
 #include <SPI.h>
 #include <SD.h>
 
-#define SD_CS         9
-#define SD_SCK        14
-#define SD_MISO       17
-#define SD_MOSI       10
+#define SD_CS         16
+#define SD_SCK        18
+#define SD_MISO       8
+#define SD_MOSI       17
 
 SPIClass SD_SPI(HSPI);
 

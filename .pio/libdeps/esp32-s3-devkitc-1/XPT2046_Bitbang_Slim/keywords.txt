@@ -1,0 +1,7 @@
+XPT2046	KEYWORD1
+begin	KEYWORD2
+getTouch	KEYWORD2
+calibrate	KEYWORD2
+loadCalibration	KEYWORD2
+saveCalibration	KEYWORD2
+Point	KEYWORD2

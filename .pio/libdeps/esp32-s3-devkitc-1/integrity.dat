@@ -1,9 +1,10 @@
 bodmer/TFT_eSPI@2.5.0
-plageoj/UrlEncode@^1.0.1
-https://github.com/CaddonThaw/lvgl-games.git
+lvgl/lvgl@^8.3.9
+esphome/ESP32-audioI2S@2.0.6
+nitek/XPT2046_Bitbang_Slim@^2.0.0
 https://github.com/CaddonThaw/baidu-xiaozhi.git
+bblanchon/ArduinoJson@^6.21.4
+plageoj/UrlEncode@^1.0.1
 gilmaimon/ArduinoWebsockets@^0.5.3
 fbiego/CST816S@^1.1.1
-lvgl/lvgl@^8.3.9
-bblanchon/ArduinoJson@^6.21.4
-esphome/ESP32-audioI2S@2.0.6
+https://github.com/CaddonThaw/lvgl-games.git
