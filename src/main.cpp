@@ -98,7 +98,7 @@ void setup()
     lvgl_setup();
     SD_init();
     music_init();
-    // xiaozhi_init();
+    xiaozhi_init();
 
     ui_init();
     task_init();
