@@ -2,6 +2,7 @@
 #include <driver/i2s.h>
 #include <Audio.h>
 #include <SD.h>
+#include "ui/src/ui.h"
 
 #define I2S_DOUT      40
 #define I2S_BCLK      41
@@ -55,6 +56,7 @@ void music_update()
         // 暂停->播放
         if(Music.pause_flag && !audio.isRunning())
         {
+            lv_label_set_text_fmt(ui_LabelMusicName, "正在播放: %s", Music.song_name);
             audio.pauseResume();
             Music.pause_flag = 0;
         }
@@ -90,6 +92,26 @@ void music_update()
         }
         if(!audio.isRunning() && Music.start_flag == 0)
         {
+            if(Music.play_mode == 0) // 单曲循环
+            {
+                // do nothing
+            }
+            else if(Music.play_mode == 1) // 列表循环
+            {
+                if(Music.play_index == lv_roller_get_option_cnt(ui_RollerMusic) - 2)
+                    Music.play_index = 0;
+                else 
+                    Music.play_index++; 
+            }
+            else if(Music.play_mode == 2) // 随机播放
+            {
+                Music.play_index = random(0, lv_roller_get_option_cnt(ui_RollerMusic) - 2);
+            }
+            lv_obj_add_state(ui_StartMusic, LV_STATE_CHECKED);
+            lv_roller_set_selected(ui_RollerMusic, Music.play_index, LV_ANIM_OFF);
+            lv_roller_get_selected_str(ui_RollerMusic, Music.song_name, sizeof(Music.song_name));
+            lv_label_set_text_fmt(ui_LabelMusicName, "正在播放: %s", Music.song_name);
+
 			Music.start_flag = 1; 
         }
     }
@@ -98,6 +120,7 @@ void music_update()
         // 播放->暂停
         if(!Music.pause_flag && audio.isRunning() && Xiaozhi.answer_flag == 0)
         {
+            lv_label_set_text_fmt(ui_LabelMusicName, "暂停播放: %s", Music.song_name);
             audio.pauseResume();
             Music.pause_flag = 1;
         }

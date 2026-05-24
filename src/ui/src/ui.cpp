@@ -139,9 +139,16 @@ void ui_event_StartMusic(lv_event_t * e);
 lv_obj_t * ui_StartMusic;
 void ui_event_ChangeMusic(lv_event_t * e);
 lv_obj_t * ui_ChangeMusic;
+void ui_event_LastMusic(lv_event_t * e);
+lv_obj_t * ui_LastMusic;
+void ui_event_NextMusic(lv_event_t * e);
+lv_obj_t * ui_NextMusic;
+void ui_event_PlayMusicMode(lv_event_t * e);
+lv_obj_t * ui_PlayMusicMode;
 void ui_event_SliderVoice(lv_event_t * e);
 lv_obj_t * ui_SliderVoice;
 lv_obj_t * ui_LabelVoice;
+lv_obj_t * ui_LabelMusicName;
 // CUSTOM VARIABLES
 
 
@@ -478,8 +485,14 @@ void ui_event_StartMusic(lv_event_t * e)
     lv_obj_t * target = lv_event_get_target(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        if(lv_obj_has_state(target, LV_STATE_CHECKED))Music.play_flag = 1;
-        else Music.play_flag = 0;
+        if(lv_obj_has_state(target, LV_STATE_CHECKED))
+        {
+            Music.play_flag = 1;
+            if(!Music.pause_flag)
+                Music.start_flag = 1;
+        }    
+        else 
+            Music.play_flag = 0;
     }
 }
 
@@ -488,10 +501,69 @@ void ui_event_ChangeMusic(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        Music.play_index = lv_roller_get_selected(ui_RollerMusic);
+        lv_obj_add_state(ui_StartMusic, LV_STATE_CHECKED);
+        lv_roller_set_selected(ui_RollerMusic, Music.play_index, LV_ANIM_OFF);
+        lv_roller_get_selected_str(ui_RollerMusic, Music.song_name, sizeof(Music.song_name));
+        lv_label_set_text_fmt(ui_LabelMusicName, "正在播放: %s", Music.song_name);
         Music.play_flag = 1;
         Music.start_flag = 1;
+    }
+}
+
+void ui_event_LastMusic(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        if(Music.play_index == 0)
+            Music.play_index = lv_roller_get_option_cnt(ui_RollerMusic) - 2;
+        else 
+            Music.play_index--;
         lv_obj_add_state(ui_StartMusic, LV_STATE_CHECKED);
+        lv_roller_set_selected(ui_RollerMusic, Music.play_index, LV_ANIM_OFF);
         lv_roller_get_selected_str(ui_RollerMusic, Music.song_name, sizeof(Music.song_name));
+        lv_label_set_text_fmt(ui_LabelMusicName, "正在播放: %s", Music.song_name);
+        Music.play_flag = 1;
+        Music.start_flag = 1;
+    }
+}
+
+void ui_event_NextMusic(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        if(Music.play_index == lv_roller_get_option_cnt(ui_RollerMusic) - 2)
+            Music.play_index = 0;
+        else 
+            Music.play_index++;
+        lv_obj_add_state(ui_StartMusic, LV_STATE_CHECKED);
+        lv_roller_set_selected(ui_RollerMusic, Music.play_index, LV_ANIM_OFF);
+        lv_roller_get_selected_str(ui_RollerMusic, Music.song_name, sizeof(Music.song_name));
+        lv_label_set_text_fmt(ui_LabelMusicName, "正在播放: %s", Music.song_name);
+        Music.play_flag = 1;
+        Music.start_flag = 1;
+    }
+}
+
+void ui_event_PlayMusicMode(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_CLICKED) {
+        lv_obj_clear_state(ui_PlayMusicMode, LV_STATE_ANY);
+        if(++Music.play_mode > 2)
+            Music.play_mode = 0;
+        // 单曲循环
+        if(Music.play_mode == 0)
+            lv_obj_add_state(ui_PlayMusicMode, LV_STATE_DEFAULT);
+        // 顺序播放
+        else if(Music.play_mode == 1)
+            lv_obj_add_state(ui_PlayMusicMode, LV_STATE_USER_2);
+        // 随机播放
+        else if(Music.play_mode == 2)
+            lv_obj_add_state(ui_PlayMusicMode, LV_STATE_USER_1);
     }
 }
 

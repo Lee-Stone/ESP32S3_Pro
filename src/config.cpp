@@ -29,7 +29,9 @@ cfg_music Music = {
     .play_flag = false,
     .start_flag = false,
     .pause_flag = false,
-    .volume_value = 16
+    .volume_value = 16,
+    .play_mode = 0,
+    .play_index = 0
 };
 
 cfg_game Game = {

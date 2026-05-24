@@ -36,6 +36,8 @@ typedef struct {
     bool start_flag;
     bool pause_flag;
     int volume_value;
+    uint8_t play_mode;
+    uint16_t play_index;
 } cfg_music;
 
 typedef struct {

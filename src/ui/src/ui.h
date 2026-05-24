@@ -149,9 +149,16 @@ void ui_event_StartMusic(lv_event_t * e);
 extern lv_obj_t * ui_StartMusic;
 void ui_event_ChangeMusic(lv_event_t * e);
 extern lv_obj_t * ui_ChangeMusic;
+void ui_event_LastMusic(lv_event_t * e);
+extern lv_obj_t * ui_LastMusic;
+void ui_event_NextMusic(lv_event_t * e);
+extern lv_obj_t * ui_NextMusic;
+void ui_event_PlayMusicMode(lv_event_t * e);
+extern lv_obj_t * ui_PlayMusicMode;
 void ui_event_SliderVoice(lv_event_t * e);
 extern lv_obj_t * ui_SliderVoice;
 extern lv_obj_t * ui_LabelVoice;
+extern lv_obj_t * ui_LabelMusicName;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_GPT
@@ -252,6 +259,13 @@ LV_IMG_DECLARE(ui_img_music_pause_png);    // assets/Music_Pause.png
 LV_IMG_DECLARE(ui_img_music_play_png);    // assets/Music_Play.png
 LV_IMG_DECLARE(ui_img_musicchange_released_png);    // assets/MusicChange_Released.png
 LV_IMG_DECLARE(ui_img_musicchange_pressed_png);    // assets/MusicChange_Pressed.png
+LV_IMG_DECLARE(ui_img_musiclast_released_png);    // assets/MusicLast_Released.png
+LV_IMG_DECLARE(ui_img_musiclast_pressed_png);    // assets/MusicLast_Pressed.png
+LV_IMG_DECLARE(ui_img_musicnext_released_png);    // assets/MusicNext_Released.png
+LV_IMG_DECLARE(ui_img_musicnext_pressed_png);    // assets/MusicNext_Pressed.png
+LV_IMG_DECLARE(ui_img_music_onceloop_png);    // assets/Music_OnceLoop.png
+LV_IMG_DECLARE(ui_img_music_random_png);    // assets/Music_Random.png
+LV_IMG_DECLARE(ui_img_music_orderloop_png);    // assets/Music_OrderLoop.png
 LV_IMG_DECLARE(ui_img_about_message_png);    // assets/About_Message.png
 LV_IMG_DECLARE(ui_img_about_luoxiaohei1_png);    // assets/About_LuoXiaoHei1.png
 LV_IMG_DECLARE(ui_img_about_luoxiaohei3_png);    // assets/About_LuoXiaoHei3.png
