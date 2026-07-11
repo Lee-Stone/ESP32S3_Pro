@@ -88,7 +88,7 @@ esp32s3-lvgl-terminal/
 ### 1. 物料清单
 
 - **主控芯片**：【ESP32-S3 N16R8】16MB Flash + 8MB PSRAM
-- **显示屏**：【ST7789】3.5寸 SPI TFT 320x240
+- **显示屏**：【ST7789】2.8 寸 SPI TFT 320x240
 - **触摸屏**：【CST816S】I2C 电容触摸
 - **音频输出**：【NS4168】I2S DAC 功放模块
 - **麦克风**：【MSM261S4030H0R】I2S MEMS 数字麦克风
